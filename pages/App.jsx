@@ -1,6 +1,15 @@
-function App() {
+import Footer from '../components/ui/Footer'
+import Header from '../components/ui/Header'
+
+function App () {
   return (
-    <h1>Hello world!</h1>
+    <>
+      <Header />
+      <main>
+
+      </main>
+      <Footer />
+    </>
   )
 }
 
