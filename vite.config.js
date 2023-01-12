@@ -6,6 +6,7 @@ import { resolve } from 'path'
 export default defineConfig({
   plugins: [react()],
   test: {
-    dir: resolve(__dirname, 'test')
+    dir: resolve(__dirname, 'test'),
+    environment: 'happy-dom'
   }
 })
