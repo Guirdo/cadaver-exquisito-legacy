@@ -21,7 +21,7 @@ function SignInForm ({ setHasLoggedIn }) {
 
   return (
     <form
-      aria-label="Log In Form"
+      aria-label="Sign In Form"
       className="login"
       onSubmit={handleSubmit}
     >
