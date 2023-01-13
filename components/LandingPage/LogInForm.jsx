@@ -1,5 +1,7 @@
 import useForm from '@guirdo/simple-use-form'
-function LogInForm () {
+import isEmail from 'validator/lib/isEmail'
+
+function LogInForm ({ setHasLoggedIn }) {
   const { formValues, handleOnChange } = useForm({
     email: ''
   })
@@ -8,6 +10,10 @@ function LogInForm () {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    if (isEmail(email)) {
+      setHasLoggedIn(true)
+    }
   }
 
   return (
