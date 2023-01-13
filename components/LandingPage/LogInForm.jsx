@@ -1,12 +1,15 @@
+import { useState } from 'react'
 import useForm from '@guirdo/simple-use-form'
 import isEmail from 'validator/lib/isEmail'
 
 function LogInForm ({ setHasLoggedIn }) {
+  const [withPassword, setWithPassword] = useState(false)
   const { formValues, handleOnChange } = useForm({
-    email: ''
+    email: '',
+    password: ''
   })
 
-  const { email } = formValues
+  const { email, password } = formValues
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -35,6 +38,25 @@ function LogInForm ({ setHasLoggedIn }) {
         type="email"
         placeholder="Correo Electrónico"
       />
+
+      {
+        withPassword &&
+          <input
+          type="password"
+          name="password"
+          value={password}
+          onChange={handleOnChange}
+          placeholder="Contraseña"
+        />
+      }
+
+      <span
+        className="login__link"
+        aria-label="with password"
+        onClick={() => setWithPassword(!withPassword)}
+      >
+        Ingresar con contraseña
+      </span>
 
       <button
         className='login__button'
