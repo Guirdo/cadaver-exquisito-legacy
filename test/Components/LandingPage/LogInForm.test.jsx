@@ -30,4 +30,37 @@ describe('#LogInForm', () => {
     expect(buttonElement).toBeTruthy()
     expect(buttonElement.textContent).toBe('Entrar')
   })
+
+  it('should show a with-password log in option with a button', () => {
+    render(<LogInForm />)
+
+    const withPasswordButton = screen.getByLabelText('with password')
+    let passwordInput = screen.queryByPlaceholderText('Contraseña')
+
+    expect(withPasswordButton).toBeTruthy()
+    expect(passwordInput).not.toBeTruthy()
+
+    fireEvent.click(withPasswordButton)
+
+    passwordInput = screen.queryByPlaceholderText('Contraseña')
+    expect(passwordInput).toBeTruthy()
+  })
+
+  it('should hide the with-password log in option', () => {
+    render(<LogInForm />)
+
+    const withPasswordButton = screen.getByLabelText('with password')
+    let passwordInput = screen.queryByPlaceholderText('Contraseña')
+
+    expect(withPasswordButton).toBeTruthy()
+    expect(passwordInput).not.toBeTruthy()
+
+    fireEvent.click(withPasswordButton)
+    passwordInput = screen.queryByPlaceholderText('Contraseña')
+    expect(passwordInput).toBeTruthy()
+
+    fireEvent.click(withPasswordButton)
+    passwordInput = screen.queryByPlaceholderText('Contraseña')
+    expect(passwordInput).not.toBeTruthy()
+  })
 })
