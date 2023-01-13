@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $s-xs;
+  background-color: $primary;
+  color: $white;
+
+  &-brand {
+    text-shadow: 2px 2px 4px $dark;
+  }
+}
