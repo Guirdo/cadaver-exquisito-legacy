@@ -14,20 +14,41 @@ describe('#LandingPage', () => {
   it('should render a log in form', () => {
     render(<LandingPage />)
 
-    const formElement = screen.getByLabelText('Log In Form')
+    const formElement = screen.getByLabelText('Sign Up Form')
     expect(formElement).toBeTruthy()
   })
 
   it('should show a validation message after the user enters their email', ()=>{
     render(<LandingPage />)
 
-    const formElement = screen.getByLabelText('Log In Form')
+    const formElement = screen.getByLabelText('Sign Up Form')
     const inputElement = screen.getByPlaceholderText('Correo Electrónico')
     fireEvent.change(inputElement, {target: { value: 'joe@mail.com' }})
     fireEvent.submit(formElement)
 
     const validationMessage = screen.queryByLabelText('Validation message')
 
+    expect(validationMessage).toBeTruthy()
+  })
+
+  it('should show a validation message after the user enters their email and password', ()=>{
+    render(<LandingPage />)
+
+    const formElement = screen.getByLabelText('Sign Up Form')
+    const emailElement = screen.getByPlaceholderText('Correo Electrónico')
+    const withPasswordButton = screen.getByLabelText('with password')
+
+    fireEvent.click(withPasswordButton)
+
+    const passwordElement = screen.getByLabelText('Password')
+    const confirmPasswordElement = screen.getByLabelText('Confirm password')
+
+    fireEvent.change(emailElement, {target: { value: 'joe@mail.com' }})
+    fireEvent.change(passwordElement, {target: { value: '#Bc43fghY' }})
+    fireEvent.change(confirmPasswordElement, {target: { value: '#Bc43fghY' }})
+    fireEvent.submit(formElement)
+
+    const validationMessage = screen.queryByLabelText('Validation message')
     expect(validationMessage).toBeTruthy()
   })
 })

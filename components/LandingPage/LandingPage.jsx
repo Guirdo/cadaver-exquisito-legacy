@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Layout from '../Layout'
-import SignInForm from './SignInForm'
+import SignUpForm from './SignUpForm'
 
 function LandingPage () {
   const [hasLoggedIn, setHasLoggedIn] = useState(false)
@@ -17,8 +17,8 @@ function LandingPage () {
 
       {
         !hasLoggedIn
-          ? <SignInForm
-          setHasLoggedIn={setHasLoggedIn}
+          ? <SignUpForm
+            setHasLoggedIn={setHasLoggedIn}
           />
           : <span
             className='landing__validation-message'
