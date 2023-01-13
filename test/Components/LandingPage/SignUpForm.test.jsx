@@ -49,4 +49,15 @@ describe('#SignUpForm', () => {
     expect(passwordInput).toBeTruthy()
     expect(confirmPasswordInput).toBeTruthy()
   })
+
+  it('should change the with-password option text', () => {
+    render(<SignUpForm />)
+
+    const withPasswordButton = screen.getByLabelText('with password')
+    expect(withPasswordButton.textContent).toBe('Ingresar con contraseña')
+
+    fireEvent.click(withPasswordButton)
+
+    expect(withPasswordButton.textContent).toBe('Ingresar con link mágico')
+  })
 })
