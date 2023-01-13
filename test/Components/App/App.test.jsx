@@ -8,7 +8,7 @@ describe('#App', () => {
   it('should render correctly', () => {
     render(<App />)
 
-    const headingElement = screen.getByRole('heading')
-    expect(headingElement.textContent).toBe("💀Cadaver Exquisito🍷")
+    const headingElement = screen.getByRole('heading', {name: "💀Cadaver Exquisito🍷"})
+    expect(headingElement).toBeTruthy()
   })
 })
