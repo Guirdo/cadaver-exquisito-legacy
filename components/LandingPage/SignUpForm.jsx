@@ -37,11 +37,8 @@ function SignUpForm ({ setHasLoggedIn }) {
       className="auth"
       onSubmit={handleSubmit}
     >
-      <label
-        className='auth__text'
-      >
-        Ingresa con tu correo electrónico y recibiras un mensaje con el link mágico que te permitira crear una cuenta o ingresar si ya lo haz hecho.
-      </label>
+      <h2 className='auth__title'>Registrate para jugar</h2>
+
       <input
         className='auth__input'
         name="email"
@@ -81,7 +78,11 @@ function SignUpForm ({ setHasLoggedIn }) {
         aria-label="with password"
         onClick={() => setWithPassword(!withPassword)}
       >
-        Ingresar con contraseña
+        {
+          withPassword
+            ? 'Ingresar con link mágico'
+            : 'Ingresar con contraseña'
+        }
       </span>
 
       <button
