@@ -1,30 +1,30 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
-import LogInForm from "@/components/LandingPage/LogInForm";
+import SignInForm from "@/components/LandingPage/SignInForm";
 
 describe('#LogInForm', () => {
   afterEach(()=>cleanup)
 
   it('should be a function', () => {
-    expect(LogInForm).toBeTypeOf('function')
+    expect(SignInForm).toBeTypeOf('function')
   })
 
   it('should contain a form', () => {
-    render(<LogInForm />)
+    render(<SignInForm />)
 
     const formElement = screen.getByLabelText('Log In Form')
     expect(formElement).toBeTruthy()
   })
 
   it('should contain an input for the user\s email', () => {
-    render(<LogInForm />)
+    render(<SignInForm />)
 
     const inputElement = screen.getByPlaceholderText('Correo Electrónico')
     expect(inputElement).toBeTruthy()
   })
 
   it('should contain a confirmation button', () => {
-    render(<LogInForm />)
+    render(<SignInForm />)
 
     const buttonElement = screen.getByRole('button')
     expect(buttonElement).toBeTruthy()
@@ -32,7 +32,7 @@ describe('#LogInForm', () => {
   })
 
   it('should show a with-password log in option with a button', () => {
-    render(<LogInForm />)
+    render(<SignInForm />)
 
     const withPasswordButton = screen.getByLabelText('with password')
     let passwordInput = screen.queryByPlaceholderText('Contraseña')
@@ -47,7 +47,7 @@ describe('#LogInForm', () => {
   })
 
   it('should hide the with-password log in option', () => {
-    render(<LogInForm />)
+    render(<SignInForm />)
 
     const withPasswordButton = screen.getByLabelText('with password')
     let passwordInput = screen.queryByPlaceholderText('Contraseña')
