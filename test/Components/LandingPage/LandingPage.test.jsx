@@ -53,4 +53,29 @@ describe('#LandingPage', () => {
     const validationMessage = screen.queryByLabelText('Validation message')
     expect(validationMessage).toBeTruthy()
   })
+
+  it('should display the Sign In form when the user click the signing option', () => {
+    render(<LandingPage />)
+
+    const signingButton = screen.getByLabelText('signing option')
+    fireEvent.click(signingButton)
+
+    const signInForm = screen.getByLabelText('Sign In Form')
+    expect(signInForm).toBeTruthy()
+  })
+
+  it('should hide the Sign In form when the user click the signing option', () => {
+    render(<LandingPage />)
+
+    const signingButton = screen.getByLabelText('signing option')
+    fireEvent.click(signingButton)
+
+    let signInForm = screen.getByLabelText('Sign In Form')
+    expect(signInForm).toBeTruthy()
+
+    fireEvent.click(signingButton)
+
+    signInForm = screen.queryByLabelText('Sign In Form')
+    expect(signInForm).not.toBeTruthy()
+  })
 })
