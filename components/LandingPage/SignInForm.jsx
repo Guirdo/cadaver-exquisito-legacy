@@ -2,7 +2,7 @@ import { useState } from 'react'
 import useForm from '@guirdo/simple-use-form'
 import isEmail from 'validator/lib/isEmail'
 
-function LogInForm ({ setHasLoggedIn }) {
+function SignInForm ({ setHasLoggedIn }) {
   const [withPassword, setWithPassword] = useState(false)
   const { formValues, handleOnChange } = useForm({
     email: '',
@@ -68,4 +68,4 @@ function LogInForm ({ setHasLoggedIn }) {
   )
 }
 
-export default LogInForm
+export default SignInForm

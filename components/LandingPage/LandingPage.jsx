@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Layout from '../Layout'
-import LogInForm from './LogInForm'
+import SignInForm from './SignInForm'
 
 function LandingPage () {
   const [hasLoggedIn, setHasLoggedIn] = useState(false)
@@ -17,7 +17,7 @@ function LandingPage () {
 
       {
         !hasLoggedIn
-          ? <LogInForm
+          ? <SignInForm
           setHasLoggedIn={setHasLoggedIn}
           />
           : <span
