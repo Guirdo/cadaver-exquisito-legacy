@@ -2,7 +2,7 @@ import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 import SignInForm from "@/components/LandingPage/SignInForm";
 
-describe('#LogInForm', () => {
+describe('#SignInForm', () => {
   afterEach(()=>cleanup)
 
   it('should be a function', () => {
@@ -12,7 +12,7 @@ describe('#LogInForm', () => {
   it('should contain a form', () => {
     render(<SignInForm />)
 
-    const formElement = screen.getByLabelText('Log In Form')
+    const formElement = screen.getByLabelText('Sign In Form')
     expect(formElement).toBeTruthy()
   })
 
