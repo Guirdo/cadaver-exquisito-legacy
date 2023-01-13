@@ -8,7 +8,9 @@ describe('#LandingPage', () => {
   it('should render correctly', () => {
     render(<LandingPage />)
 
-    expect(screen.getByRole('heading').textContent).toBe("💀Cadaver Exquisito🍷")
+    const headingElement = screen.getByRole('heading',{name: "💀Cadaver Exquisito🍷"})
+
+    expect(headingElement.textContent).toBeTruthy()
   })
 
   it('should render a log in form', () => {
