@@ -22,16 +22,16 @@ function SignInForm ({ setHasLoggedIn }) {
   return (
     <form
       aria-label="Sign In Form"
-      className="login"
+      className="auth"
       onSubmit={handleSubmit}
     >
       <label
-        className='login__text'
+        className='auth__text'
       >
         Ingresa con tu correo electrónico y recibiras un mensaje con el link mágico que te permitira crear una cuenta o ingresar si ya lo haz hecho.
       </label>
       <input
-        className='login__input'
+        className='auth__input'
         name="email"
         value={email}
         onChange={handleOnChange}
@@ -51,7 +51,7 @@ function SignInForm ({ setHasLoggedIn }) {
       }
 
       <span
-        className="login__link"
+        className="auth__link"
         aria-label="with password"
         onClick={() => setWithPassword(!withPassword)}
       >
@@ -59,7 +59,7 @@ function SignInForm ({ setHasLoggedIn }) {
       </span>
 
       <button
-        className='login__button'
+        className='auth__button'
         type="submit"
       >
         Entrar
