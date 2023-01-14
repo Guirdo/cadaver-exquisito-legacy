@@ -1,0 +1,16 @@
+.button {
+  padding: $s-xs;
+  font-size: $s-md;
+  border: 1px solid black;
+  border-radius: $s-xs;
+  font-weight: bold;
+
+  &--block {
+    width: 100%;
+  }
+
+  &--primary {
+    background-color: $primary;
+    color: $white;
+  }
+}
