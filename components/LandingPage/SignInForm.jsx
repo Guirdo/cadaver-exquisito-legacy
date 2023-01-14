@@ -38,6 +38,7 @@ function SignInForm ({ setHasLoggedIn }) {
       {
         withPassword &&
         <input
+          className='auth__input'
           type="password"
           name="password"
           value={password}
@@ -59,7 +60,7 @@ function SignInForm ({ setHasLoggedIn }) {
       </span>
 
       <button
-        className='auth__button'
+        className='button button--primary button--block auth__button'
         type="submit"
       >
         Entrar

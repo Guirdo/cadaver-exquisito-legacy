@@ -86,7 +86,7 @@ function SignUpForm ({ setHasLoggedIn }) {
       </span>
 
       <button
-        className='auth__button'
+        className='button button--primary button--block auth__button'
         type="submit"
       >
         Entrar

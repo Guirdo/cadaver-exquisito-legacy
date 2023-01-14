@@ -16,38 +16,36 @@ function LandingPage () {
           💀Cadaver Exquisito🍷es un juego de palabras donde tus amigos y tú escriben juntos un poema o historia, pero solo podrás ver lo que la persona anterior escribió. Hasta el final de la partida el resultado que verán sera fruto del consciente colectivo de su grupo.
         </p>
 
-        <div>
+        {
+          isSigningIn
+            ? <SignInForm />
+            : <>
+              {
+                !hasLoggedIn
+                  ? <SignUpForm
+                    setHasLoggedIn={setHasLoggedIn}
+                  />
+                  : <span
+                    className='landing__validation-message'
+                    aria-label='Validation message'
+                  >
+                    Por favor, revisa tu correo
+                  </span>
+              }
+            </>
+        }
+
+        <span
+          className='landing__link'
+          aria-label='signing option'
+          onClick={() => setIsSigningIn(!isSigningIn)}
+        >
           {
             isSigningIn
-              ? <SignInForm />
-              : <>
-                {
-                  !hasLoggedIn
-                    ? <SignUpForm
-                      setHasLoggedIn={setHasLoggedIn}
-                    />
-                    : <span
-                      className='landing__validation-message'
-                      aria-label='Validation message'
-                    >
-                      Por favor, revisa tu correo
-                    </span>
-                }
-              </>
+              ? 'Registrate'
+              : 'Inicia sesión'
           }
-
-          <span
-            className='landing__link'
-            aria-label='signing option'
-            onClick={() => setIsSigningIn(!isSigningIn)}
-          >
-            {
-              isSigningIn
-                ? 'Registrate'
-                : 'Inicia sesión'
-            }
-          </span>
-        </div>
+        </span>
       </main>
     </Layout>
   )
