@@ -9,7 +9,17 @@ function Footer () {
           <a href="#" className="footer__link">Acerca de</a>
         </li>
       </ul>
-      <div>Hecho con ❤️ por <a href="#">Guirdo</a></div>
+      <div>
+        Hecho con ❤️ por{' '}
+        <a
+          className="footer__link"
+          href="https://github.com/Guirdo"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Guirdo
+        </a>
+      </div>
     </footer>
   )
 }

@@ -1,0 +1,20 @@
+.footer {
+  padding: $s-sm;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: $dark;
+
+  &-list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: $s-xs;
+  }
+
+  &__link {
+    color: gray;
+  }
+}
