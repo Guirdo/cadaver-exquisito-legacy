@@ -1,0 +1,26 @@
+.landing {
+  padding: $s-sm;
+  display: flex;
+  flex-direction: column;
+  gap: $s-md;
+
+  &__text {
+    text-align: center;
+  }
+
+  &__link {
+    color: $info;
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+  }
+
+  @include desktop-screen {
+    width: 50%;
+    align-self: center;
+
+    &__text {
+      margin-block: $s-lg;
+    }
+  }
+}
