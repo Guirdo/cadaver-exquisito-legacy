@@ -12,7 +12,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "prepare": "husky install",
-    "test": "vitest"
+    "test": "vitest",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@guirdo/simple-use-form": "^1.0.6",
