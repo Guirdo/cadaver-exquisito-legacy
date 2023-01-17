@@ -15,6 +15,13 @@
     text-align: center;
   }
 
+  &__validation-message {
+    text-align: center;
+    font-size: $s-lg;
+    font-weight: bold;
+    margin-block: $s-lg;
+  }
+
   @include desktop-screen {
     width: 50%;
     align-self: center;

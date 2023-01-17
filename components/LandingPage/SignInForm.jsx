@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import useForm from '@guirdo/simple-use-form'
 import isEmail from 'validator/lib/isEmail'
+import supabase from '../../lib/supabase'
 
-function SignInForm ({ setHasLoggedIn }) {
+function SignInForm () {
   const [withPassword, setWithPassword] = useState(false)
   const { formValues, handleOnChange } = useForm({
     email: '',
@@ -11,11 +12,15 @@ function SignInForm ({ setHasLoggedIn }) {
 
   const { email, password } = formValues
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     if (isEmail(email)) {
-      setHasLoggedIn(true)
+      if (withPassword) {
+        await supabase.auth.signInWithPassword({ email, password })
+      } else {
+        await supabase.auth.signInWithOtp({ email })
+      }
     }
   }
 

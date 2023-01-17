@@ -1,6 +1,18 @@
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import useUserStore from '../../store/userStore'
 import Layout from '../Layout'
 
 function HomePage () {
+  const user = useUserStore((state) => state.user)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (user === null) {
+      navigate('/')
+    }
+  }, [user])
+
   return (
     <Layout>
       <main className='home'>

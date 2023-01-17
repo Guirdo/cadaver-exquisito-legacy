@@ -1,11 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Layout from '../Layout'
 import SignUpForm from './SignUpForm'
 import SignInForm from './SignInForm'
+import useUserStore from '../../store/userStore'
+import { useNavigate } from 'react-router-dom'
 
 function LandingPage () {
+  const user = useUserStore((state) => state.user)
   const [hasLoggedIn, setHasLoggedIn] = useState(false)
   const [isSigningIn, setIsSigningIn] = useState(false)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (user !== null) {
+      navigate('/home')
+    }
+  }, [user])
 
   return (
     <Layout>

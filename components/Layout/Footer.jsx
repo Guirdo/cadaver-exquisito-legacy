@@ -1,6 +1,27 @@
+import { useNavigate } from 'react-router-dom'
+import supabase from '../../lib/supabase'
+import useUserStore from '../../store/userStore'
+
 function Footer () {
+  const user = useUserStore((state) => state.user)
+  const navigate = useNavigate()
+
+  const handleLogOut = async () => {
+    await supabase.auth.signOut()
+      .then(() => navigate('/'))
+  }
+
   return (
     <footer className="footer">
+      {
+        user &&
+          <span
+            className="footer__link"
+            onClick={handleLogOut}
+          >
+            Log out
+          </span>
+      }
       <ul className="footer-list">
         <li className="footer-list-item">
           <a href="#" className="footer__link">Privacidad</a>
