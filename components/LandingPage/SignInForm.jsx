@@ -2,8 +2,10 @@ import { useState } from 'react'
 import useForm from '@guirdo/simple-use-form'
 import isEmail from 'validator/lib/isEmail'
 import supabase from '../../lib/supabase'
+import useErrorStore from '../../store/errorStore'
 
 function SignInForm () {
+  const setErrorMessage = useErrorStore((state) => state.setErrorMessage)
   const [withPassword, setWithPassword] = useState(false)
   const { formValues, handleOnChange } = useForm({
     email: '',
@@ -16,11 +18,16 @@ function SignInForm () {
     e.preventDefault()
 
     if (isEmail(email)) {
+      let response
       if (withPassword) {
-        await supabase.auth.signInWithPassword({ email, password })
+        response = await supabase.auth.signInWithPassword({ email, password })
       } else {
-        await supabase.auth.signInWithOtp({ email })
+        response = await supabase.auth.signInWithOtp({ email })
       }
+
+      console.log(response)
+
+      response.error && setErrorMessage(response.error.message)
     }
   }
 

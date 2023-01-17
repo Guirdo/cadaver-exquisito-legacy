@@ -5,9 +5,12 @@ import HomePage from '../HomePage'
 import { useEffect } from 'react'
 import supabase from '../../lib/supabase'
 import useUserStore from '../../store/userStore'
+import useErrorStore from '../../store/errorStore'
+import ErrorModal from '../ErrorModal'
 
 function App () {
   const setUser = useUserStore((state) => state.setUser)
+  const errorMessage = useErrorStore((state) => state.errorMessage)
 
   useEffect(() => {
     async function getUser () {
@@ -35,16 +38,21 @@ function App () {
   })
 
   return (
-    <Routes>
-      <Route
-        path='/'
-        element={<LandingPage />}
-      />
-      <Route
-        path='/home'
-        element={<HomePage />}
-      />
-    </Routes>
+    <>
+      <Routes>
+        <Route
+          path='/'
+          element={<LandingPage />}
+        />
+        <Route
+          path='/home'
+          element={<HomePage />}
+        />
+      </Routes>
+      {
+        errorMessage && <ErrorModal />
+      }
+    </>
   )
 }
 

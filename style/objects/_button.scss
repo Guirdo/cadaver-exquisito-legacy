@@ -13,4 +13,9 @@
     background-color: $primary;
     color: $white;
   }
+
+  &--success {
+    background-color: $success;
+    color: $white;
+  }
 }
