@@ -1,4 +1,4 @@
-describe('Singing in', () => {
+describe('Signing in', () => {
   it('should redirect to to home when signing in and then sign out', () => {
     cy.visit('http://localhost:5173/')
 
