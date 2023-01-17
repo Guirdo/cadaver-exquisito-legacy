@@ -16,3 +16,7 @@ body {
   flex-direction: row;
   align-items: stretch;
 }
+
+body > div:nth-child(1) {
+  width: 100%;
+}
