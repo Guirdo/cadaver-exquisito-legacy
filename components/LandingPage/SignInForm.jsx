@@ -25,8 +25,6 @@ function SignInForm () {
         response = await supabase.auth.signInWithOtp({ email })
       }
 
-      console.log(response)
-
       response.error && setErrorMessage(response.error.message)
     }
   }
