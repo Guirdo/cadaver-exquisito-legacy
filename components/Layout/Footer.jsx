@@ -19,7 +19,7 @@ function Footer () {
             className="footer__link"
             onClick={handleLogOut}
           >
-            Log out
+            Cerrar sesión
           </span>
       }
       <ul className="footer-list">
