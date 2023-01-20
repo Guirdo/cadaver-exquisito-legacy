@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom'
 import supabase from '../../lib/supabase'
-import useUserStore from '../../store/userStore'
+import useSessionStore from '../../store/sessionStore'
 
 function Footer () {
-  const user = useUserStore((state) => state.user)
+  const user = useSessionStore((state) => state.user)
   const navigate = useNavigate()
 
   const handleLogOut = async () => {

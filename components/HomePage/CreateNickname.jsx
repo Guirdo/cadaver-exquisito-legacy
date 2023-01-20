@@ -1,12 +1,12 @@
 import useForm from '@guirdo/simple-use-form'
 import validator from 'validator'
 import supabase from '../../lib/supabase'
-import useUserStore from '../../store/userStore'
+import useSessionStore from '../../store/sessionStore'
 import useErrorStore from '../../store/errorStore'
 
 function CreateNickname () {
-  const user = useUserStore((state) => state.user)
-  const setProfile = useUserStore((state) => state.setProfile)
+  const user = useSessionStore((state) => state.user)
+  const setProfile = useSessionStore((state) => state.setProfile)
   const setErrorMessage = useErrorStore((state) => state.setErrorMessage)
   const { formValues, handleOnChange } = useForm({
     nickname: ''
