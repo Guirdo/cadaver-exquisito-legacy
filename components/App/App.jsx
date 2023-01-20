@@ -5,6 +5,7 @@ import useSession from '../../hooks/useSession'
 import ErrorModal from '../ErrorModal'
 import LandingPage from '../LandingPage'
 import HomePage from '../HomePage'
+import Layout from '../Layout'
 
 function App () {
   const errorMessage = useErrorStore((state) => state.errorMessage)
@@ -12,7 +13,7 @@ function App () {
   useSession()
 
   return (
-    <>
+    <Layout>
       <Routes>
         <Route
           path='/'
@@ -26,7 +27,7 @@ function App () {
       {
         errorMessage && <ErrorModal />
       }
-    </>
+    </Layout>
   )
 }
 

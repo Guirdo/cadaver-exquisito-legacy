@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import useUserStore from '../../store/userStore'
-import Layout from '../Layout'
+import useSessionStore from '../../store/sessionStore'
+import CreateNickname from './CreateNickname'
+import GameList from './GameList'
 
 function HomePage () {
-  const user = useUserStore((state) => state.user)
+  const user = useSessionStore((state) => state.user)
+  const profile = useSessionStore((state) => state.profile)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -14,23 +16,13 @@ function HomePage () {
   }, [user])
 
   return (
-    <Layout>
-      <main className='home'>
-        <div className='home-game-list'>
-          <div className='game-card'>
-            <span className='game__title'>
-              Crear nuevo cadaver
-            </span>
-            <button
-              className='game__create-new-button'
-              aria-label='Create new room'
-            >
-              +
-            </button>
-          </div>
-        </div>
-      </main>
-    </Layout>
+    <main className='home'>
+      {
+        profile
+          ? <GameList />
+          : <CreateNickname />
+      }
+    </main>
   )
 }
 
