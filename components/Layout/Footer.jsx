@@ -4,7 +4,7 @@ import supabase from '../../lib/supabase'
 import useSessionStore from '../../store/sessionStore'
 
 function Footer () {
-  const { t } = useTranslation('footer')
+  const { t, i18n } = useTranslation('footer')
   const user = useSessionStore((state) => state.user)
   const navigate = useNavigate()
 
@@ -13,12 +13,17 @@ function Footer () {
       .then(() => navigate('/'))
   }
 
+  const handleClick = (lng) => {
+    i18n.changeLanguage(lng)
+    localStorage.setItem('lng', lng)
+  }
+
   return (
     <footer className="footer">
       {
         user &&
           <span
-            className="footer__link"
+            className="footer__log-out"
             onClick={handleLogOut}
           >
             {t('log-out')}
@@ -31,6 +36,22 @@ function Footer () {
         <li className="footer-list-item">
           <a href="#" className="footer__link">{t('about')}</a>
         </li>
+        <li className="footer-list-item">
+          <span
+            className="footer__link"
+            onClick={() => handleClick('es')}
+          >
+            {t('spanish')}(es)
+          </span>
+          </li>
+        <li className="footer-list-item">
+          <span
+            className="footer__link"
+            onClick={() => handleClick('en')}
+          >
+            {t('english')}(en)
+          </span>
+          </li>
       </ul>
       <div>
         {t('made-by')}{' '}

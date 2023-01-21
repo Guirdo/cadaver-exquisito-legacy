@@ -6,16 +6,25 @@
   align-items: center;
   font-weight: bold;
   color: $dark;
+  gap: $s-xs;
+  font-size: $s-sm;
 
   &-list {
     list-style: none;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: $s-xs;
+    text-align: center;
   }
 
   &__link {
     color: gray;
     text-decoration: underline;
+  }
+
+  &__log-out {
+    text-decoration: underline;
+    color: $primary;
+    cursor: pointer;
   }
 }
