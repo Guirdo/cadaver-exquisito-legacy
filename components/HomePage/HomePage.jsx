@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useSessionStore from '../../store/sessionStore'
 import CreateNickname from './CreateNickname'
-import GameList from './GameList'
+import RoomsList from './RoomsList'
 
 function HomePage () {
   const user = useSessionStore((state) => state.user)
@@ -18,9 +18,14 @@ function HomePage () {
   return (
     <main className='home'>
       {
-        profile
-          ? <GameList />
-          : <CreateNickname />
+        !profile
+          ? <CreateNickname />
+          : <>
+            <span className='home__greeting'>
+              Bienvenido {profile.nickname}
+            </span>
+            <RoomsList />
+          </>
       }
     </main>
   )

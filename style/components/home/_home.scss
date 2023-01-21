@@ -1,6 +1,15 @@
 .home {
-  padding: $s-sm;
+  padding: $s-xlg;
   display: flex;
   flex-direction: column;
   gap: $s-md;
+
+  @include desktop-screen {
+    padding-inline: 20%;
+  }
+
+  &__greeting {
+    font-size: $s-lg;
+    font-weight: bold;
+  }
 }

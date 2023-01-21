@@ -1,0 +1,35 @@
+.room {
+  &-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    grid-template-rows: repeat(auto-fill, 200px);
+    justify-content: space-between;
+  }
+
+  &-card {
+    border: 2px solid $dark;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $s-sm;
+    gap: $s-sm;
+
+    &__title {
+      font-size: $s-md;
+      font-weight: bold;
+      flex-grow: 2;
+      text-align: center;
+    }
+
+    &__create-button {
+      height: 80px;
+      width: 80px;
+      border: 2px solid $success;
+      color: $success;
+      background-color: white;
+      font-size: calc($s-lg * 2);
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+}
