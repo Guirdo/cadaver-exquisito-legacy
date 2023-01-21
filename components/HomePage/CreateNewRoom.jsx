@@ -1,4 +1,7 @@
+import { useTranslation } from 'react-i18next'
+
 function CreateNewRoom () {
+  const { t } = useTranslation('home')
   const handleClick = () => {
     console.log('click')
   }
@@ -10,7 +13,7 @@ function CreateNewRoom () {
       onClick={handleClick}
     >
       <span className='room-card__title'>
-        Crear nuevo cadaver
+        {t('create-new-room')}
       </span>
       <span
         className='room-card__create-button'

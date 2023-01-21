@@ -3,8 +3,10 @@ import validator from 'validator'
 import supabase from '../../lib/supabase'
 import useSessionStore from '../../store/sessionStore'
 import useErrorStore from '../../store/errorStore'
+import { useTranslation } from 'react-i18next'
 
 function CreateNickname () {
+  const { t } = useTranslation(['home', 'common'])
   const user = useSessionStore((state) => state.user)
   const setProfile = useSessionStore((state) => state.setProfile)
   const setErrorMessage = useErrorStore((state) => state.setErrorMessage)
@@ -48,7 +50,7 @@ function CreateNickname () {
         onSubmit={handleSubmit}
       >
         <label className="create-nickname__text">
-          Para empezar a jugar primero necesitas crear un nombre de usuario.
+          {t('for-starting')}
         </label>
 
         <input
@@ -62,14 +64,14 @@ function CreateNickname () {
         />
 
         <small className='create-nickname__small'>
-          Solo carácteres alfanuméricos y guiones bajos
+          {t('valid-characters')}
         </small>
 
         <button
           className='button button--success create-nickname__button'
           type='submit'
         >
-          Confirmar
+          {t('confirm', { ns: 'common' })}
         </button>
       </form>
     </div>
