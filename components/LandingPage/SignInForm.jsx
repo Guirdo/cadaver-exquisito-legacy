@@ -3,8 +3,10 @@ import useForm from '@guirdo/simple-use-form'
 import isEmail from 'validator/lib/isEmail'
 import supabase from '../../lib/supabase'
 import useErrorStore from '../../store/errorStore'
+import { useTranslation } from 'react-i18next'
 
 function SignInForm () {
+  const { t } = useTranslation('auth')
   const setErrorMessage = useErrorStore((state) => state.setErrorMessage)
   const [withPassword, setWithPassword] = useState(false)
   const { formValues, handleOnChange } = useForm({
@@ -35,14 +37,14 @@ function SignInForm () {
       className="auth"
       onSubmit={handleSubmit}
     >
-      <h2>Inicia sesión</h2>
+      <h2>{t('sign-in')}</h2>
       <input
         className='auth__input'
         name="email"
         value={email}
         onChange={handleOnChange}
         type="email"
-        placeholder="Correo Electrónico"
+        placeholder={t('email')}
       />
 
       {
@@ -53,7 +55,7 @@ function SignInForm () {
           name="password"
           value={password}
           onChange={handleOnChange}
-          placeholder="Contraseña"
+          placeholder={t('password')}
         />
       }
 
@@ -64,8 +66,8 @@ function SignInForm () {
       >
         {
           withPassword
-            ? 'Ingresar con link mágico'
-            : 'Ingresar con contraseña'
+            ? t('with-magic-link')
+            : t('with-password')
         }
       </span>
 
@@ -73,7 +75,7 @@ function SignInForm () {
         className='button button--primary button--block auth__button'
         type="submit"
       >
-        Entrar
+        {t('enter')}
       </button>
     </form>
   )

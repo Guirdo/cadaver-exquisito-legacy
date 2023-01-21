@@ -2,8 +2,10 @@ import { useState } from 'react'
 import useForm from '@guirdo/simple-use-form'
 import validator from 'validator'
 import supabase from '../../lib/supabase'
+import { useTranslation } from 'react-i18next'
 
 function SignUpForm ({ setHasLoggedIn }) {
+  const { t } = useTranslation('auth')
   const [withPassword, setWithPassword] = useState(false)
   const { formValues, handleOnChange } = useForm({
     email: '',
@@ -44,7 +46,7 @@ function SignUpForm ({ setHasLoggedIn }) {
       className="auth"
       onSubmit={handleSubmit}
     >
-      <h2 className='auth__title'>Registrate para jugar</h2>
+      <h2 className='auth__title'>{t('sign-up')}</h2>
 
       <input
         className='auth__input'
@@ -52,7 +54,7 @@ function SignUpForm ({ setHasLoggedIn }) {
         value={email}
         onChange={handleOnChange}
         type="email"
-        placeholder="Correo Electrónico"
+        placeholder={t('email')}
       />
 
       {
@@ -65,7 +67,7 @@ function SignUpForm ({ setHasLoggedIn }) {
             value={password}
             onChange={handleOnChange}
             aria-label="Password"
-            placeholder="Contraseña"
+            placeholder={t('password')}
           />
 
           <input
@@ -75,7 +77,7 @@ function SignUpForm ({ setHasLoggedIn }) {
             value={confirmPassword}
             onChange={handleOnChange}
             aria-label="Confirm password"
-            placeholder="Confirmar"
+            placeholder={t('confirm')}
           />
         </>
       }
@@ -87,8 +89,8 @@ function SignUpForm ({ setHasLoggedIn }) {
       >
         {
           withPassword
-            ? 'Ingresar con link mágico'
-            : 'Ingresar con contraseña'
+            ? t('with-magic-link')
+            : t('with-password')
         }
       </span>
 
@@ -96,7 +98,7 @@ function SignUpForm ({ setHasLoggedIn }) {
         className='button button--primary button--block auth__button'
         type="submit"
       >
-        Entrar
+        {t('enter')}
       </button>
     </form>
   )

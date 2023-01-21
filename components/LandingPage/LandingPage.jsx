@@ -3,8 +3,10 @@ import SignUpForm from './SignUpForm'
 import SignInForm from './SignInForm'
 import useSessionStore from '../../store/sessionStore'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 function LandingPage () {
+  const { t } = useTranslation('landing')
   const user = useSessionStore((state) => state.user)
   const [hasLoggedIn, setHasLoggedIn] = useState(false)
   const [isSigningIn, setIsSigningIn] = useState(false)
@@ -21,7 +23,7 @@ function LandingPage () {
       <p
         className='landing__text'
       >
-        💀Cadaver Exquisito🍷es un juego de palabras donde tus amigos y tú escriben juntos un poema o historia, pero solo podrás ver lo que la persona anterior escribió. Hasta el final de la partida el resultado que verán sera fruto del consciente colectivo de su grupo.
+        {t('description')}
       </p>
 
       {
@@ -37,7 +39,7 @@ function LandingPage () {
                   className='landing__validation-message'
                   aria-label='Validation message'
                 >
-                  Por favor, revisa tu correo
+                  {t('validation')}
                 </span>
             }
           </>
@@ -50,8 +52,8 @@ function LandingPage () {
       >
         {
           isSigningIn
-            ? 'Registrate'
-            : 'Inicia sesión'
+            ? t('sign-up')
+            : t('sign-in')
         }
       </span>
     </main>
